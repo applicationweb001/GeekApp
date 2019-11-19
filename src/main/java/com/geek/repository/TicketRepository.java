@@ -29,6 +29,7 @@ public interface TicketRepository extends PagingAndSortingRepository<Ticket,Long
     		+ "tt.technician WHERE t.id=:id")
     Optional<Request> fetchByTicketIdWithTicketTechnicianWithTechnincian(Long id);
   
-    
+    @Query( "SELECT DISTINCT e FROM Ticket e JOIN FETCH e.problems p WHERE p.name=:name")
+    List<Ticket> findAllByProblems(@Param("name") String name);
     
 }

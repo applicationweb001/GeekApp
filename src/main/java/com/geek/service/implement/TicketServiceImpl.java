@@ -46,7 +46,7 @@ public class TicketServiceImpl implements TicketService {
 		ticket.setStatus(objectupdate.getStatus());
 		//ticket.setStartTime(objectupdate.getStartTime());
 		
-		ticket.setProblem(objectupdate.getProblem());
+		ticket.setProblems(objectupdate.getProblems());
 		
 		ticketRepository.save(ticket);
 		return ticket;
@@ -94,4 +94,11 @@ public class TicketServiceImpl implements TicketService {
         if (!tickets.isEmpty()) { return false;}
         else {return true;}
 	}
+
+	@Override
+	public List<Ticket> findByProblemName(String name) {
+		
+		return ticketRepository.findAllByProblems(name);
+	}
+	
 }

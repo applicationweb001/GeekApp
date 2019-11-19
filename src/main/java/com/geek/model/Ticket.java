@@ -28,7 +28,7 @@ import com.geek.dateAudit.DateAudit;
 @Entity
 @Table(name = "tickets")
 public class Ticket extends DateAudit {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -36,10 +36,10 @@ public class Ticket extends DateAudit {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne(fetch= FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "client_id")
 	private Client client;
- 
+
 	// @DateTimeFormat(pattern = "yyyy-MM-dd")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "dateAttention", nullable = false)
@@ -58,22 +58,22 @@ public class Ticket extends DateAudit {
 
 	@NotEmpty(message = "Please enter a address.")
 	private String address;
-	
-	@OneToMany(fetch= FetchType.LAZY,cascade = CascadeType.ALL)
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "ticket_id")
 	private List<TicketTechnician> ticketTechnicians;
-	
+
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name="ticket_problems",joinColumns= {@JoinColumn(name="problem_id")}) // aqui se agrego
+	@JoinTable(name = "ticket_problems", joinColumns = { @JoinColumn(name = "problem_id") }) // aqui se agrego
 	@NotEmpty(message = "Por favor ingrese al menos un problema para el ticket")
-	private List<Problem> problem= new ArrayList<>();
-	
-	public List<Problem> getProblem() {
-		return problem;
+	private List<Problem> problems = new ArrayList<>();
+
+	public List<Problem> getProblems() {
+		return problems;
 	}
 
-	public void setProblem(List<Problem> problem) {
-		this.problem = problem;
+	public void setProblems(List<Problem> problems) {
+		this.problems = problems;
 	}
 
 	public static long getSerialversionuid() {
@@ -158,5 +158,5 @@ public class Ticket extends DateAudit {
 	public void addTicketTech(TicketTechnician item) {
 		this.ticketTechnicians.add(item);
 	}
-	
+
 }
