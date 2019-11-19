@@ -91,8 +91,6 @@
 											required>
 											<option value="Pendiente">Pendiente</option>
 											<!--- <option value="Ejecucion">Ejecucion</option>--- -->
-											<option value="Completado">Completado</option>
-											<option value="Fallido" selected>Fallido</option>
 										</select> <span class="text-danger errorMsg"
 											th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></span>
 									</div>
