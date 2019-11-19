@@ -45,6 +45,7 @@ public class TicketServiceImpl implements TicketService {
 		ticket.setTypeService(objectupdate.getTypeService());
 		ticket.setStatus(objectupdate.getStatus());
 		//ticket.setStartTime(objectupdate.getStartTime());
+		ticket.setAdviser(objectupdate.getAdviser());
 		
 		ticket.setProblems(objectupdate.getProblems());
 		

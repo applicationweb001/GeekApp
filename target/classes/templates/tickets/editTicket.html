@@ -78,6 +78,17 @@
 												th:text="${problem.name}" th:value="${problem.id}"></option>
 										</select>
 									</div>
+									
+									<div class="form-group">
+										<label for="adviser">Asesor</label> <select id="adviser"
+											class="form-control" th:field="*{adviser}" readonly
+											onmousedown="return false;">
+											<option th:each="adviser : ${advisors}"
+												th:text="${adviser.name}" th:value="${adviser.id}"></option>
+										</select> <span class="text-danger errorMsg"
+											th:if="${#fields.hasErrors('adviser')}" th:errors="*{adviser}"></span>
+									</div>
+									
 
 
 									<div class="form-group">

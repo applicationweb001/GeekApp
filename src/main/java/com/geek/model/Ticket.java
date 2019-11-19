@@ -39,6 +39,10 @@ public class Ticket extends DateAudit {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "client_id")
 	private Client client;
+	
+	@ManyToOne(fetch= FetchType.LAZY)
+	@JoinColumn(name = "adviser_id")
+	private Adviser adviser;
 
 	// @DateTimeFormat(pattern = "yyyy-MM-dd")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -158,5 +162,15 @@ public class Ticket extends DateAudit {
 	public void addTicketTech(TicketTechnician item) {
 		this.ticketTechnicians.add(item);
 	}
+
+	public Adviser getAdviser() {
+		return adviser;
+	}
+
+	public void setAdviser(Adviser adviser) {
+		this.adviser = adviser;
+	}
+	
+	
 
 }

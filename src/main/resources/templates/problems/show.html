@@ -20,6 +20,10 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
                     <div class="title">
                     <th>Nombre:</th>
                         <h2 th:text="${problem.name}"></h2>
+                        
+                        <th>Descripcion:</th>
+                        <h2 th:text="${problem.description}"></h2>
+                        
                     </div>
                     
                     <h6 th:text="'created at ' + ${#dates.format(problem.createdAt, 'dd-MMM-yyyy HH:mm')}"></h6>

@@ -23,11 +23,13 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.geek.common.PageInitPagination;
+import com.geek.model.Adviser;
 import com.geek.model.Category;
 import com.geek.model.Client;
 import com.geek.model.Problem;
 import com.geek.model.Ticket;
 import com.geek.paginitation.PageRender;
+import com.geek.service.AdviserService;
 import com.geek.service.ClientService;
 import com.geek.service.ProblemService;
 import com.geek.service.TechnicianIndService;
@@ -59,6 +61,9 @@ public class TicketController {
 	@Autowired
 	private TechnicianIndService technicianIndService;
 
+	@Autowired
+	private AdviserService adviserService;
+	
 	@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 	@GetMapping("/{id}")
 	public String getTicketById(@PathVariable(value = "id") Long ticketId, Model model) {
@@ -114,6 +119,9 @@ public class TicketController {
 			List<Client> clients = clientService.getAll(); // se agrego esto
 			model.addAttribute("clients", clients); // y esto
 
+			List<Adviser> advisors= adviserService.getAll(); // se agrego esto
+			model.addAttribute("advisors", advisors); // y esto
+			
 			List<Problem> problems = problemService.getAll(); // se agrego esto
 			model.addAttribute("problems", problems); // y esto
 
@@ -134,6 +142,9 @@ public class TicketController {
 			List<Client> clients = clientService.getAll(); // se agrego esto
 			attr.addFlashAttribute("clients", clients); // y esto 1
 
+			List<Adviser> advisors= adviserService.getAll(); // se agrego esto
+			attr.addFlashAttribute("advisors", advisors); // y esto 1
+			
 			List<Problem> problems = problemService.getAll(); // se agrego esto
 			attr.addFlashAttribute("problems", problems); // y esto
 
@@ -158,6 +169,9 @@ public class TicketController {
 			model.addAttribute("ticket", ticketService.findById(ticketId));
 			List<Client> clients = clientService.getAll(); // se agrego esto
 			model.addAttribute("clients", clients); // y esto
+			List<Adviser> advisors= adviserService.getAll(); // se agrego esto
+			model.addAttribute("advisors", advisors); // y esto
+			
 			List<Problem> problems = problemService.getAll(); // se agrego esto
 			model.addAttribute("problems", problems); // y esto
 		}
@@ -176,6 +190,9 @@ public class TicketController {
 			attr.addFlashAttribute("ticket", ticketDetails);
 			List<Client> clients = clientService.getAll(); // se agrego esto
 			attr.addFlashAttribute("clients", clients); // y esto 1
+			List<Adviser> advisors= adviserService.getAll(); // se agrego esto
+			attr.addFlashAttribute("advisors", advisors); // y esto 1
+			
 			List<Problem> problems = problemService.getAll(); // se agrego esto
 			attr.addFlashAttribute("problems", problems); // y esto
 

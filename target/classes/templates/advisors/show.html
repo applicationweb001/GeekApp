@@ -21,6 +21,12 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
                     
 									<th>Nombre del Asesor:</th>
                         <h2 th:text="${adviser.name}"></h2>
+                        
+                        <th>Telefono:</th>
+									<h2 th:text="${adviser.mobile}"></h2>
+                        <th>Email:</th>
+									<h2 th:text="${adviser.email}"></h2>
+                        
                     </div>
                     
                     <h6 th:text="'created at ' + ${#dates.format(adviser.createdAt, 'dd-MMM-yyyy HH:mm')}"></h6>

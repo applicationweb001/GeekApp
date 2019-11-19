@@ -32,7 +32,8 @@
 											<th>Fecha de Servicio</th>
 											<th>Fecha de Atencion</th>
 											<th>Estado</th>
-											
+											<th>Problemas</th>
+											<th>Asesor</th>
 
 											<th></th>
 											<th></th>
@@ -48,7 +49,23 @@
 
 											<td th:text="${ticket.dateService}"></td>
 											<td th:text="${ticket.status}"></td>
+										
 											
+											<td><th:block
+													th:each="problem : ${ticket.problems}">
+													<span th:text="${problem.name} + ' ,'">Item
+														description here...</span>
+
+
+												</th:block>
+												
+												<td><th:block
+													th:each="adviser : ${ticket.adviser}">
+													<span th:text="${adviser.name} ">Item
+														description here...</span>
+
+
+												</th:block>
 
 											<td
 												th:text="${#dates.format(ticket.updatedAt, 'dd-MMM-yyyy')}"></td>
