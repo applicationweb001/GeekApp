@@ -89,7 +89,7 @@ public class PageInitPagination {
 		 */
 		int evalPage = (page.orElse(0) < 1) ? INITIAL_PAGE : page.get() - 1;
 
-		Page<Article> articlesList = articleService.findAll(PageRequest.of(evalPage, evalPageSize));
+		Page<Ticket> articlesList = ticketService.findAll(PageRequest.of(evalPage, evalPageSize));
 		PagerModel pager = new PagerModel(articlesList.getTotalPages(), articlesList.getNumber(), BUTTONS_TO_SHOW);
 
 		initModelView.addObject("articlesList", articlesList);

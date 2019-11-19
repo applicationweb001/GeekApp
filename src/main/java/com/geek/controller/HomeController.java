@@ -25,9 +25,9 @@ public class HomeController {
 
 	@Autowired
 	private PageInitPagination pageInitPagination;
-
+	
 	protected static final String INDEX_VIEW = "index"; // articles with pagination
-
+	
 	protected static final String ARTICLE_VIEW = "articles/showArticle"; // view template for single article
 
 	@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
@@ -37,14 +37,14 @@ public class HomeController {
 		ModelAndView modelAndView = pageInitPagination.initPagination(pageSize, page, INDEX_VIEW);
 		return modelAndView;
 	}
-	
+
+
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/{id}")
 	public String getArticleById(@PathVariable(value = "id") Long articleId, Model model) {
 		model.addAttribute("article", articleService.findById(articleId));
 		return ARTICLE_VIEW;
 	}
-	
 	
 	@GetMapping("/access-denied")
     public String accessDenied() {

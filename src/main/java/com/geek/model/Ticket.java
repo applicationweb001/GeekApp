@@ -28,7 +28,6 @@ import com.geek.dateAudit.DateAudit;
 @Entity
 @Table(name = "tickets")
 public class Ticket extends DateAudit {
-
 	
 	private static final long serialVersionUID = 1L;
 
@@ -68,7 +67,6 @@ public class Ticket extends DateAudit {
 	@JoinTable(name="ticket_problems",joinColumns= {@JoinColumn(name="problem_id")}) // aqui se agrego
 	@NotEmpty(message = "Por favor ingrese al menos un problema para el ticket")
 	private List<Problem> problem= new ArrayList<>();
-
 	
 	public List<Problem> getProblem() {
 		return problem;
