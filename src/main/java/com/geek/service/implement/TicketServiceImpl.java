@@ -101,5 +101,11 @@ public class TicketServiceImpl implements TicketService {
 		
 		return ticketRepository.findAllByProblems(name);
 	}
+
+	@Override
+	public Page<Ticket> findByStatus(String status, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return ticketRepository.findByStatus(status, pageable);
+	}
 	
 }

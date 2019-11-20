@@ -2,6 +2,7 @@ package com.geek.repository;
 
 
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -27,8 +28,8 @@ public interface TechnicianIndRepository extends PagingAndSortingRepository<Tech
      * @return          List of articles with the same title and author
      * 
      */
-    @Query("SELECT a FROM Category a WHERE a.name=:name")
-    List<TechnicianInd> findByTechnicianIndName(@Param("name") String technicianInd);
+    //@Query("SELECT a FROM TechnicianInd a WHERE a.name IN :names")
+    //List<TechnicianInd> findByTechnicianIndNameList(@Param("names") Collection<String>names);
     
     Page<TechnicianInd> findAll(Pageable pageable);
 	

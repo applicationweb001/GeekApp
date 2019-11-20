@@ -37,7 +37,7 @@
 									<div class="form-group">
 										<label for="fecha">Fecha de Atencion</label> <input
 											type="date" class="form-control" th:field="*{dateAttention}"
-											id="fecha" /> <span class="text-danger errorMsg"
+											id="fecha" readonly/> <span class="text-danger errorMsg"
 											th:if="${#fields.hasErrors('dateAttention')}"
 											th:errors="*{dateAttention}"></span>
 									</div>
@@ -131,7 +131,7 @@
 		var day = ("0" + now.getDate()).slice(-2);
 		var month = ("0" + (now.getMonth() + 1)).slice(-2);
 
-		var today = (day) + "/" + +(month) + "/" + +now.getFullYear();
+		var today = now.getFullYear()+ "-"+(month) + "-"+(day);
 		$("#fecha").val(today);
 	});
 </script>

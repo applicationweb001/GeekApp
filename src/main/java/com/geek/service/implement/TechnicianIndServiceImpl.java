@@ -85,11 +85,7 @@ public class TechnicianIndServiceImpl implements TechnicianIndService {
 
 	@Override
 	public boolean TechnicianIndValid(TechnicianInd technicianInd) {
-		List<TechnicianInd> techniciansInd= new ArrayList<>();
-		technicianIndRepository.findByTechnicianIndName(technicianInd.getName())
-                .iterator().forEachRemaining(techniciansInd::add);
-        if (!techniciansInd.isEmpty()) { return false;}
-        else {return true;}
+		return true;
 	}
 
 	@Override

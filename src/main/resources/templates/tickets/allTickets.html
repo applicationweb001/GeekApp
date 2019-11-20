@@ -16,7 +16,23 @@
 			<div class="main">
 				<th:block th:include="fragments/navbarPrimary"></th:block>
 				<div class="section">
+					
+
 					<div class="container">
+					<form th:action="@{/tickets/search/status/}" th:method="get">
+						<div class="row">
+							<div class="col">
+								<input id="status" name="status" type="text"
+									class="form-control"
+									placeholder="ingrese el estado de un ticket">
+
+							</div>
+							<div class="col">
+								<input type="submit" class="btn btn-primary" value="Buscar" />
+							</div>
+						</div>
+
+					</form>
 						<div class="row">
 							<div class="col-md-8 offset-md-2 col-sm-12">
 
@@ -32,7 +48,6 @@
 											<th>Fecha de Servicio</th>
 											<th>Fecha de Atencion</th>
 											<th>Estado</th>
-											<th>Problemas</th>
 											<th>Asesor</th>
 
 											<th></th>
@@ -45,28 +60,19 @@
 											<td th:text="${ticket.id}"></td>
 											<td th:text="${ticket.client.name}"></td>
 
-											<td th:text="${#dates.format(ticket.dateAttention, 'dd-MMM-yyyy')}"></td>
+											<td
+												th:text="${#dates.format(ticket.dateAttention, 'dd-MMM-yyyy')}"></td>
 
 											<td th:text="${ticket.dateService}"></td>
 											<td th:text="${ticket.status}"></td>
-										
-											
-											<td><th:block
-													th:each="problem : ${ticket.problems}">
-													<span th:text="${problem.name} + ' ,'">Item
-														description here...</span>
+
+
+											<td><th:block th:each="adviser : ${ticket.adviser}">
+													<span th:text="${adviser.name} ">Item description
+														here...</span>
 
 
 												</th:block>
-												
-												<td><th:block
-													th:each="adviser : ${ticket.adviser}">
-													<span th:text="${adviser.name} ">Item
-														description here...</span>
-
-
-												</th:block>
-
 											<td
 												th:text="${#dates.format(ticket.updatedAt, 'dd-MMM-yyyy')}"></td>
 
@@ -80,14 +86,14 @@
 										</tr>
 									</tbody>
 								</table>
-								
+
 								<nav th:replace="fragments/pagination1 :: paginator"></nav>
 							</div>
 						</div>
 					</div>
 					<br> &nbsp;&nbsp;&nbsp; <br>
 
-					
+
 
 				</div>
 			</div>

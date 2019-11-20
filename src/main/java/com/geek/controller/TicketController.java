@@ -91,6 +91,30 @@ public class TicketController {
 	}
 	
 	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
+	@GetMapping("/search/status")
+	public String getAllTicketsByStatus(@RequestParam(name = "page", defaultValue = "0") Optional<Integer> page,
+			@RequestParam(name = "status") String status ,Model model) {
+
+		try {
+			Pageable pageRequest = PageRequest.of(page.get(), 5);
+			Page<Ticket> tickets = ticketService.findByStatus(status, pageRequest);
+			PageRender<Ticket> pageRender = new PageRender<Ticket>("/tickets/search", tickets);
+
+			model.addAttribute("ticketsList", tickets);
+			model.addAttribute("page", pageRender);
+
+		} catch (Exception e) {
+
+		}
+
+		return TICKET_PAGE_VIEW;
+	}
+	
+	
+	
+	
+	
+	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
 	@GetMapping("/search")
 	public String getAllTechniciansBySpecialtyName(Model model) {
 
